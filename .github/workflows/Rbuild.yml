@@ -1,9 +1,15 @@
-- name: R-actions
-  uses: Swechhya/R-actions@v1.1
-  with:
-    # What should be run? One of: ["all", "build"]
-    action: # optional, default is all
+name: R Build and Checks
+on: [push, pull_request]
 
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+    steps:
+    - uses: actions/checkout@v1
+    - name: R Build and Checks
+      uses: Swechhya/R-actions@v1.1
+      with:
+        action: 'all'
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 library(ggplot2)
